@@ -1,16 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using MyPartWork;
+using Primitives;
 using UnityEngine;
 
-namespace MyPartWork
+namespace Mechanics
 {
     public class JumpMechanics : MonoBehaviour
     {
         [SerializeField] private IntEventReceiver jumpReceiver;
-
         [SerializeField] private Rigidbody rb;
+        [SerializeField] private Transform groundChecker;
+        [SerializeField] private LayerMask notPlayerLayer;
 
         private void OnEnable()
         {
@@ -24,8 +22,11 @@ namespace MyPartWork
         
         private void OnJump(int force)
         {
-            if (rb.velocity.y == 0)
+            if (Physics.Raycast(groundChecker.transform.position, Vector3.down,0.5f, notPlayerLayer))
+            {
                 rb.AddForce(Vector3.up * force, ForceMode.Impulse);
+               
+            }
         }
     }
 }

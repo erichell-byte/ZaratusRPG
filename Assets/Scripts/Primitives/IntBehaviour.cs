@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace MyPartWork
+namespace Primitives
 {
     public sealed class IntBehaviour : MonoBehaviour
     {
@@ -19,7 +16,6 @@ namespace MyPartWork
                 this.OnValueChanged?.Invoke(value);
             }
         }
-
         [SerializeField] private int value;
 
     }

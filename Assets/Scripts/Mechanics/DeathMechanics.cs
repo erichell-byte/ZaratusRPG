@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using MyPartWork;
+using Primitives;
 using UnityEngine;
 
-namespace MyPartWork
+namespace Mechanics
 {
     public class DeathMechanics : MonoBehaviour
     {

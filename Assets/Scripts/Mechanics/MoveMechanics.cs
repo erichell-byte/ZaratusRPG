@@ -1,18 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using MyPartWork;
-using Unity.VisualScripting;
+using Primitives;
 using UnityEngine;
 
-namespace MyPartWork
+namespace Mechanics
 {
-
-
     public class MoveMechanics : MonoBehaviour
     {
         [SerializeField] private Vector3EventReceiver moveReceiver;
-
         [SerializeField] private Transform moveTransform;
 
         private void OnEnable()
@@ -24,8 +17,7 @@ namespace MyPartWork
         {
             this.moveReceiver.OnEvent -= OnMove;
         }
-
-
+        
         private void OnMove(Vector3 deltaPosition)
         {
             moveTransform.position += deltaPosition;

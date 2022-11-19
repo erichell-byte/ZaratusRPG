@@ -1,25 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using MyPartWork;
+using Primitives;
 using UnityEngine;
 
-
-namespace MyPartWork
+namespace Mechanics
 {
-
-
     public class ShotMechanics : MonoBehaviour
     {
-        [SerializeField] private GameObject bullet;
-
         [SerializeField] private IntEventReceiver shotSignal;
-
-        [SerializeField] private Transform shotPoint; 
+        [SerializeField] private BulletCreator bulletCreator;
         
-        
-
-
         private void OnEnable()
         {
             shotSignal.OnEvent += OnShot;
@@ -29,16 +17,16 @@ namespace MyPartWork
         {
             shotSignal.OnEvent -= OnShot;
         }
-
-
+        
         private void OnShot(int force)
         {
-            var newBullet = Instantiate(bullet, shotPoint.position, Quaternion.identity);
-
+            var newBullet = bulletCreator.CreateBullet();
             if (newBullet.TryGetComponent(out Rigidbody bulletRb))
                 bulletRb.AddForce(Vector3.forward * force, ForceMode.Impulse);
         }
     }
+
     
-    
+
+
 }

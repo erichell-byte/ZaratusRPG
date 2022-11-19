@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace MyPartWork
+namespace Primitives
 {
     public class Vector3EventReceiver : MonoBehaviour
     {
