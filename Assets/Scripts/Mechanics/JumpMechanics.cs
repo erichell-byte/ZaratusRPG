@@ -22,7 +22,7 @@ namespace Mechanics
         
         private void OnJump(int force)
         {
-            if (Physics.Raycast(groundChecker.transform.position, Vector3.down,0.5f, notPlayerLayer))
+            if (Physics.Raycast(groundChecker.transform.position, Vector3.down,0.3f, notPlayerLayer))
             {
                 rb.AddForce(Vector3.up * force, ForceMode.Impulse);
                

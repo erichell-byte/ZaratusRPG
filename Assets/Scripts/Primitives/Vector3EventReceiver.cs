@@ -9,7 +9,7 @@ namespace Primitives
         public event Action<Vector3> OnEvent;
 
         [Button]
-        private void Call(Vector3 value)
+        public void Call(Vector3 value)
         {
             Debug.Log($"Event {name} was received");
             OnEvent?.Invoke(value);
