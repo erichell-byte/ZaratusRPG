@@ -1,17 +1,34 @@
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 
-namespace Entities
+namespace MyEntities
 {
-    public class Entity : MonoBehaviour
+    public class Entity : IEntity
     {
-        [SerializeField] private MonoBehaviour[] components;
+
+        protected readonly List<object> elements;
+
+        public Entity()
+        {
+            this.elements = new List<object>();
+        }
+
+        public Entity(IEnumerable<object> elements)
+        {
+            this.elements = new List<object>(elements);
+        }
+
+        public Entity(params object[] elements)
+        {
+            this.elements = new List<object>(elements);
+        }
+        
 
         public T Get<T>()
         {
-            for (int i = 0, count = this.components.Length; i < count; i++)
+            for (int i = 0, count = this.elements.Count; i < count; i++)
             {
-                var component = this.components[i];
+                var component = this.elements[i];
                 if (component is T result)
                 {
                     return result;
@@ -20,19 +37,47 @@ namespace Entities
             throw new Exception($"Component of {typeof(T).Name} is not found ");
         }
 
-        public bool TryGet<T>(out T result)
+        public T[] GetAll<T>()
         {
-            for (int i = 0, count = this.components.Length; i < count; i++)
+            var result = new List<T>();
+            for (int i = 0, count = this.elements.Count; i < count; i++)
             {
-                var component = this.components[i];
-                if (component is T tComponent)
+                if (this.elements[i] is T element)
                 {
-                    result = tComponent;
+                    result.Add(element);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public bool TryGet<T>(out T element)
+        {
+            for (int i = 0, count = this.elements.Count; i < count; i++)
+            {
+                if (this.elements[i] is T result)
+                {
+                    element = result;
                     return true;
                 }
             }
-            result = default;
+            element = default;
             return false;
+        }
+
+        public object[] GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(object element)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(object element)
+        {
+            throw new NotImplementedException();
         }
     }
 

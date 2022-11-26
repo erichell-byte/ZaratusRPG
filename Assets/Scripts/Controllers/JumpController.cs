@@ -1,25 +1,38 @@
 using Components;
+using Context;
 using UnityEngine;
-using Entities;
 
 namespace Controllers
 {
-    public class JumpController : AbstractJumpController
+    public class JumpController : MonoBehaviour, 
+        IConstructListener,
+        IStartGameListener,
+        IFinishGameListener
     {
-        [SerializeField] private Entity unit;
         [SerializeField] private int force;
+        private JumpInput _jumpInput;
         private IJumpComponent _jumpComponent;
         
-        private void Awake()
+        
+        void IConstructListener.Construct(GameContext context)
         {
-            _jumpComponent = unit.Get<IJumpComponent>();
+            _jumpComponent = context.GetService<IJumpComponent>();
+            _jumpInput = context.GetService<JumpInput>();
         }
 
-        protected override void Jump()
+        void IStartGameListener.OnStartGame()
+        {
+            _jumpInput.OnJump += Jump;
+        }
+
+        void IFinishGameListener.OnFinishGame()
+        {
+            _jumpInput.OnJump -= Jump;
+        }
+        
+        protected void Jump()
         {
             _jumpComponent.Jump(force);
         }
-        
-        
     }
 }

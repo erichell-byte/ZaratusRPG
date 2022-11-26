@@ -1,24 +1,37 @@
 using Components;
+using Context;
 using UnityEngine;
-using Entities;
 
 namespace Controllers
 {
-    public class ShotController : AbstractShotController
+    public class ShotController: MoveController,
+        IConstructListener,
+        IStartGameListener,
+        IFinishGameListener
     {
-        [SerializeField] private Entity unit;
-
         [SerializeField] private int force;
-
         private IShotComponent _shotComponent;
-        private void Awake()
-        {
-            _shotComponent = unit.Get<IShotComponent>();
-        }
-
-        protected override void Shot()
+        private MouseInput _input;
+        
+        protected void Shot()
         {
             _shotComponent.Shot(force);
+        }
+
+        void IConstructListener.Construct(GameContext context)
+        {
+            _shotComponent = context.GetService<IShotComponent>();
+            _input = context.GetService<MouseInput>();
+        }
+
+        void IStartGameListener.OnStartGame()
+        {
+            _input.OnClick += Shot;
+        }
+
+        void IFinishGameListener.OnFinishGame()
+        {
+            _input.OnClick -= Shot;
         }
     }
 }
