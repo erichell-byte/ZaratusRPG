@@ -1,5 +1,7 @@
 using Components;
 using Context;
+using Mechanics;
+using Primitives;
 using UnityEngine;
 
 namespace Controllers
@@ -8,32 +10,29 @@ namespace Controllers
         IStartGameListener,
         IFinishGameListener
     {
-         private IDealthComponent _dealthComponent;
-         private DealthCollision _dealthCollision;
-         private GameContext _context;
+        private GameContext context;
+        private IComponent_TriggerEvents triggerEvent;
+         
         void IConstructListener.Construct(GameContext context)
         {
-            _dealthComponent = context.GetService<IDealthComponent>();
-            _dealthCollision = context.GetService<DealthCollision>();
-            _context = context;
+            this.context = context;
+            triggerEvent = context.GetService<CharacterService>().GetCharacter().Get<IComponent_TriggerEvents>();
         }
 
         void IStartGameListener.OnStartGame()
         {
-            _dealthCollision.OnDealth += Dealth;
+            triggerEvent.OnEntered += Dealth;
         }
 
         void IFinishGameListener.OnFinishGame()
         {
-            _dealthCollision.OnDealth -= Dealth;
+            triggerEvent.OnEntered += Dealth;
         }
 
-        public void Dealth()
+        public void Dealth(Collider other)
         {
-            _dealthComponent.Dealth();
-            _context.FinishGame();
+            if (other.CompareTag("Dealth"))
+                context.FinishGame();
         }
-
-
     }
 }

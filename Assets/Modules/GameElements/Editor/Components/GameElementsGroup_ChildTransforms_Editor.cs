@@ -1,9 +1,9 @@
 #if UNITY_EDITOR
-using GameElements.Extensions;
+using GameElementsLesson.Extensions;
 using UnityEditor;
 using UnityEngine;
 
-namespace GameElements.UnityEditor
+namespace GameElementsLesson.UnityEditor
 {
     [CustomEditor(typeof(MonoGameElementGroup_ChildTransforms))]
     public sealed class GameElementsGroup_ChildTransforms_Editor : Editor

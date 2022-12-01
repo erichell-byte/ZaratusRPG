@@ -5,7 +5,7 @@ using System.Linq;
 using Debug = UnityEngine.Debug;
 #endif
 
-namespace GameElements
+namespace GameElementsLesson
 {
     public class GameContext : IGameContext
     {

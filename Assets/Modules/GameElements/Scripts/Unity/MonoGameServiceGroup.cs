@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameElements.Unity
+namespace GameElementsLesson.Unity
 {
     [AddComponentMenu("GameElements/Game Service Group")]
     [DisallowMultipleComponent]

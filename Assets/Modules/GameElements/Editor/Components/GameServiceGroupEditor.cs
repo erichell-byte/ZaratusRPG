@@ -1,9 +1,10 @@
 #if UNITY_EDITOR
-using GameElements.Unity;
+using GameElementsLesson.Unity;
+using GameElementsLesson.UnityEditor;
 using UnityEditor;
 using UnityEngine;
 
-namespace GameElements.UnityEditor
+namespace GameElementsLesson.UnityEditor
 {
     [CustomEditor(typeof(MonoGameServiceGroup))]
     public sealed class GameServiceGroupEditor : Editor

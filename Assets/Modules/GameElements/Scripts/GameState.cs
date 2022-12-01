@@ -1,4 +1,4 @@
-namespace GameElements
+namespace GameElementsLesson
 {
     public enum GameState
     {

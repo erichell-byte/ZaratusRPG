@@ -1,10 +1,11 @@
 #if UNITY_EDITOR
-using GameElements.Unity;
+using GameElementsLesson.UnityEditor;
+using GameElementsLesson.Unity;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace GameElements.UnityEditor
+namespace GameElementsLesson.UnityEditor
 {
     [CustomEditor(typeof(MonoGameContext))]
     public sealed class GameContextEditor : Editor

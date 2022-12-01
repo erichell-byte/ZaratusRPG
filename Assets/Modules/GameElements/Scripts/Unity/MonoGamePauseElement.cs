@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameElements.Extensions
+namespace GameElementsLesson.Extensions
 {
     [AddComponentMenu("GameElements/Game Element «Pause Game»")]
     public sealed class MonoGamePauseElement : MonoBehaviour, IGameAttachElement

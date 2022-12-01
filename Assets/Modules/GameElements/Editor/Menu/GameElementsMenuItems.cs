@@ -1,10 +1,10 @@
 #if UNITY_EDITOR
-using GameElements.Unity;
+using GameElementsLesson.Unity;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace GameElements.UnityEditor
+namespace GameElementsLesson.UnityEditor
 {
     public static class GameElementsMenuItems
     {

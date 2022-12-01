@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace GameElements.UnityEditor
+namespace GameElementsLesson.UnityEditor
 {
     public abstract class DragAndDropDrawler
     {

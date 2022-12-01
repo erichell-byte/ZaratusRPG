@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameElements.Extensions
+namespace GameElementsLesson.Extensions
 {
     [AddComponentMenu("GameElements/Game Element «Resume Game»")]
     public sealed class MonoGameResumeElement : MonoBehaviour, IGameAttachElement

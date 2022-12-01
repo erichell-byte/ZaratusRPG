@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace MyEntities
 {
-    
-    public class UnityEntityBase : UnityEntity
+    public class UnityEntityBase : UnityEntity, ISerializationCallbackReceiver
     {
         [SerializeField] private List<MonoBehaviour> elements = new List<MonoBehaviour>();
 
@@ -55,5 +54,13 @@ namespace MyEntities
             this.elements.Add(element);   
         }
 #endif
+        public void OnBeforeSerialize()
+        {
+        }
+
+        public void OnAfterDeserialize()
+        {
+            this._entity = new Entity(this.elements);
+        }
     }
 }

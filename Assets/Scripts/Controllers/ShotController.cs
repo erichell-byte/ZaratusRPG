@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class ShotController: MoveController,
+    public class ShotController: MonoBehaviour,
         IConstructListener,
         IStartGameListener,
         IFinishGameListener
@@ -20,7 +20,7 @@ namespace Controllers
 
         void IConstructListener.Construct(GameContext context)
         {
-            _shotComponent = context.GetService<IShotComponent>();
+            _shotComponent = context.GetService<CharacterService>().GetCharacter().Get<IShotComponent>();
             _input = context.GetService<MouseInput>();
         }
 

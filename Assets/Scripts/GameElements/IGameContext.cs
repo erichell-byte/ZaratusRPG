@@ -1,15 +1,16 @@
 using System;
 
-namespace GameElementsLesson
+namespace GameElements.Zaratust
 {
-    public interface IGameContext 
+
+    public interface IGameContext
     {
         event Action OnGameInitialized;
-        
+
         event Action OnGameReady;
-        
+
         event Action OnGameStarted;
-        
+
         event Action OnGamePaused;
 
         event Action OnGameResumed;
@@ -18,7 +19,8 @@ namespace GameElementsLesson
 
         GameState State { get; }
         
-        ///Lifecycle:
+        //Lifecycle
+
         void InitGame();
 
         void ReadyGame();
@@ -26,20 +28,22 @@ namespace GameElementsLesson
         void StartGame();
 
         void PauseGame();
-        
+
         void ResumeGame();
-    
+
         void FinishGame();
         
-        /// Elements:
+        //Elements
+
         void RegisterElement(IGameElement element);
 
-        void UnregisterElement(IGameElement element);
+        void UnRegisterElement(IGameElement element);
+        
+        //Services
 
-        /// Services:
-        void RegisterService(object service);
+        void RegisterService(IGameElement element);
 
-        void UnregisterService(object service);
+        void UnRegisterService(IGameElement element);
 
         T GetService<T>();
 
@@ -48,7 +52,8 @@ namespace GameElementsLesson
         object GetService(Type type);
 
         bool TryGetService<T>(out T service);
-
+        
         bool TryGetService(Type type, out object service);
     }
+
 }

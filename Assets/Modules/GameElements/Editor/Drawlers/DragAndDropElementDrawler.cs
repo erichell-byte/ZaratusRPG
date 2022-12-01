@@ -1,7 +1,7 @@
 #if UNITY_EDITOR
 using UnityEngine;
 
-namespace GameElements.UnityEditor
+namespace GameElementsLesson.UnityEditor
 {
     public sealed class DragAndDropElementDrawler : DragAndDropDrawler
     {

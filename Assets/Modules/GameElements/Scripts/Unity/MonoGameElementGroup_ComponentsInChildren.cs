@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using GameElements;
+using GameElementsLesson;
 using UnityEngine;
 
-namespace GameElements.Extensions
+namespace GameElementsLesson.Extensions
 {
     [AddComponentMenu("GameElements/Game Element Group «Components In Children»")]
     public sealed class MonoGameElementGroup_ComponentsInChildren : MonoBehaviour, IGameElementGroup

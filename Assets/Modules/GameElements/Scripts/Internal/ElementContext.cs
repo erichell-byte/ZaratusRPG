@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GameElements
+namespace GameElementsLesson
 {
     internal sealed class ElementContext
     {

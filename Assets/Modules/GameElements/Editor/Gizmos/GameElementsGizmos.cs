@@ -3,10 +3,10 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using GameElements.Unity;
+using GameElementsLesson.Unity;
 using UnityEditor.Callbacks;
 
-namespace GameElements.UnityEditor
+namespace GameElementsLesson.UnityEditor
 {
     public class GameElementsGizmos
     {

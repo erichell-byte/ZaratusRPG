@@ -13,10 +13,9 @@ namespace Controllers
         private JumpInput _jumpInput;
         private IJumpComponent _jumpComponent;
         
-        
         void IConstructListener.Construct(GameContext context)
         {
-            _jumpComponent = context.GetService<IJumpComponent>();
+            _jumpComponent = context.GetService<CharacterService>().GetCharacter().Get<IJumpComponent>();
             _jumpInput = context.GetService<JumpInput>();
         }
 

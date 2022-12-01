@@ -9,18 +9,18 @@ namespace Controllers
         IStartGameListener,
         IFinishGameListener
     {
-
-        [SerializeField] private AxisInput _input;
         [SerializeField] private float speed;
         
+        private AxisInput _input;
         private IMoveComponent _moveComponent;
         private Vector3 _direction;
-        
         
         void IConstructListener.Construct(GameContext context)
         {
             _input = context.GetService<AxisInput>();
-            _moveComponent = context.GetService<IMoveComponent>();
+            _moveComponent = context.GetService<CharacterService>()
+                .GetCharacter()
+                .Get<IMoveComponent>();
         }
 
         void IStartGameListener.OnStartGame()

@@ -7,7 +7,6 @@ namespace Context
 {
     public class GameContext : MonoBehaviour
     {
-
         [ReadOnly] 
         [ShowInInspector] 
         private readonly List<object> listeners = new();
@@ -15,9 +14,7 @@ namespace Context
         [ReadOnly] 
         [ShowInInspector] 
         private readonly List<object> services = new();
-
-        [SerializeField] private Timer preStartTimer;
-
+        
         public T GetService<T>()
         {
             foreach (var service in services)
@@ -67,18 +64,6 @@ namespace Context
         [Button]
         public void StartGame()
         {
-            if (preStartTimer)
-            {
-                preStartTimer.OnEnded += PendingStart;
-                preStartTimer.Play();
-                return;
-            }
-            PendingStart();
-            Debug.Log("Game started");
-        }
-
-        private void PendingStart()
-        {
             foreach (var listener in this.listeners)
             {
                 if (listener is IStartGameListener startListener)
@@ -86,8 +71,9 @@ namespace Context
                     startListener.OnStartGame();
                 }
             }
+            Debug.Log("Game started");
         }
-        
+
         [Button]
         public void FinishGame()
         {
@@ -98,8 +84,6 @@ namespace Context
                     finishListener.OnFinishGame();
                 }
             }
-            if (preStartTimer)
-                preStartTimer.OnEnded -= PendingStart;
             Debug.Log("Game finish");
         }
     }

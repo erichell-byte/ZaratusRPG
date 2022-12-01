@@ -50,7 +50,7 @@ using UnityEngine;
                 yield return null;
                 this.currentTime += Time.deltaTime;
             }
-
+            
             this.currentTime = this.duration;
             this.timerCoroutine = null;
             this.OnEnded?.Invoke();

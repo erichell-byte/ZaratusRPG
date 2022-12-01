@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using GameElements;
+using GameElementsLesson;
 using UnityEngine;
 
-namespace GameElements.Extensions
+namespace GameElementsLesson.Extensions
 {
     [AddComponentMenu("GameElements/Game Element Group «Child Transforms»")]
     public sealed class MonoGameElementGroup_ChildTransforms : MonoBehaviour, IGameElementGroup

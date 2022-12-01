@@ -1,11 +1,11 @@
 #if UNITY_EDITOR
 using System.Collections.Generic;
-using GameElements.Extensions;
+using GameElementsLesson.Extensions;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace GameElements.UnityEditor
+namespace GameElementsLesson.UnityEditor
 {
     [CustomEditor(typeof(MonoGameElementGroup_ComponentsInChildren))]
     public sealed class GameElementsGroup_ComponentsInChildren_Editor : Editor
