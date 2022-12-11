@@ -1,12 +1,24 @@
 using System;
 using System.Collections.Generic;
+using GameElements;
+using GameElements.Zaratust;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Context
-{
-    public class GameContext : MonoBehaviour
+{/// <summary>
+ /// ///// переписать этот скрипт как в проекте
+ /// </summary>
+    public class GameContext : IGameContext
     {
+        public event Action OnGameInitialized;
+        public event Action OnGameReady;
+        public event Action OnGameStarted;
+        public event Action OnGamePaused;
+        public event Action OnGameResumed;
+        public event Action OnGameFinished;
+        public GameState State { get; protected set; }
+        
         [ReadOnly] 
         [ShowInInspector] 
         private readonly List<object> listeners = new();
@@ -25,6 +37,26 @@ namespace Context
                 }
             }
             throw new Exception($"Service of type {typeof(T).Name} not found");
+        }
+
+        public object[] GetAllServices()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetService(Type type)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryGetService<T>(out T service)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryGetService(Type type, out object service)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddService(object service)
@@ -61,6 +93,17 @@ namespace Context
             Debug.Log("Game constructed");
         }
 
+        
+        public void InitGame()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReadyGame()
+        {
+            throw new NotImplementedException();
+        }
+
         [Button]
         public void StartGame()
         {
@@ -74,6 +117,16 @@ namespace Context
             Debug.Log("Game started");
         }
 
+        public void PauseGame()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResumeGame()
+        {
+            throw new NotImplementedException();
+        }
+
         [Button]
         public void FinishGame()
         {
@@ -85,6 +138,26 @@ namespace Context
                 }
             }
             Debug.Log("Game finish");
+        }
+
+        public void RegisterElement(IGameElement element)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UnRegisterElement(IGameElement element)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RegisterService(object element)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UnRegisterService(object element)
+        {
+            throw new NotImplementedException();
         }
     }
     

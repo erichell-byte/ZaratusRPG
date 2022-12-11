@@ -41,9 +41,9 @@ namespace GameElements.Zaratust
         
         //Services
 
-        void RegisterService(IGameElement element);
+        void RegisterService(object element);
 
-        void UnRegisterService(IGameElement element);
+        void UnRegisterService(object element);
 
         T GetService<T>();
 

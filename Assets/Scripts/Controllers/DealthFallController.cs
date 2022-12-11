@@ -26,7 +26,7 @@ namespace Controllers
 
         void IFinishGameListener.OnFinishGame()
         {
-            triggerEvent.OnEntered += Dealth;
+            triggerEvent.OnEntered -= Dealth;
         }
 
         public void Dealth(Collider other)
