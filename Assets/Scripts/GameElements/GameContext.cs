@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using GameElements;
 using GameElements.Zaratust;
+using GameSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Context
 {/// <summary>
  /// ///// переписать этот скрипт как в проекте
  /// </summary>
-    public class GameContext : IGameContext
+    public class GameContext : MonoBehaviour, IGameContext
     {
         public event Action OnGameInitialized;
         public event Action OnGameReady;
@@ -45,6 +46,11 @@ namespace Context
         }
 
         public object GetService(Type type)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object[] GetServices(Type type)
         {
             throw new NotImplementedException();
         }
@@ -144,6 +150,7 @@ namespace Context
         {
             throw new NotImplementedException();
         }
+
 
         public void UnRegisterElement(IGameElement element)
         {

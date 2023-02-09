@@ -68,10 +68,17 @@ namespace UI.PopupSystem
             characterUpgrader.Upgrade();
         }
 
+        public void UpdateHitPoints()
+        {
+            
+        }
+
         public void OnLevelChanged()
         {
             var canUpgrade = characterUpgrader.CanUpgrade();
             OnLevelUpButtonStateChanged?.Invoke(canUpgrade);
+            
+            
         }
 
 

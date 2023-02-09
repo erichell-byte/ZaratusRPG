@@ -7,7 +7,6 @@ namespace UI.PopupSystem
 {
     public class LevelUpPopup : Popup
     {
-
         [SerializeField] private TextMeshProUGUI characterName;
 
         [SerializeField] private TextMeshProUGUI description;
@@ -16,7 +15,7 @@ namespace UI.PopupSystem
 
         [SerializeField] private TextMeshProUGUI level;
 
-        [SerializeField] private TextMeshProUGUI hitpoints;
+        [SerializeField] private TextMeshProUGUI hitPoints;
 
         [SerializeField] private TextMeshProUGUI damage;
 
@@ -33,13 +32,13 @@ namespace UI.PopupSystem
 
             this.presenter = presenter;
             this.presenter.Start();
-            this.presenter.OnLevelUpButtonStateChanged += onLevelUpButtonStateChange;
+            this.presenter.OnLevelUpButtonStateChanged += OnLevelUpButtonStateChange;
 
             this.characterName.text = presenter.GetName();
             this.description.text = presenter.GetDescription();
             this.avatar.sprite = presenter.GetAvatar();
             this.level.text = presenter.GetLevel();
-            this.hitpoints.text = presenter.GetHitpoints();
+            this.hitPoints.text = presenter.GetHitpoints();
             this.damage.text = presenter.GetDamage();
 
             this.levelUpButton.interactable = presenter.CanUpgrade();
@@ -49,7 +48,7 @@ namespace UI.PopupSystem
         protected override void OnHide()
         {
             levelUpButton.onClick.RemoveListener(OnlevelUpClicked);
-            this.presenter.OnLevelUpButtonStateChanged -= onLevelUpButtonStateChange;
+            this.presenter.OnLevelUpButtonStateChanged -= OnLevelUpButtonStateChange;
             this.presenter.Stop();
         }
 
@@ -58,7 +57,7 @@ namespace UI.PopupSystem
             presenter.OnButtonClicked();
         }
 
-        private void onLevelUpButtonStateChange(bool isAvailable)
+        private void OnLevelUpButtonStateChange(bool isAvailable)
         {
             this.levelUpButton.interactable = isAvailable;
         }
@@ -85,6 +84,10 @@ namespace UI.PopupSystem
             bool CanUpgrade();
 
             void OnButtonClicked();
+
+            void UpdateHitPoints();
+            
+
         }
     }
 }

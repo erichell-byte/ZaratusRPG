@@ -1,6 +1,7 @@
-using GameElements.Zaratust;
+using GameElementsLesson;
 using Sirenix.OdinInspector;
 using UnityEngine;
+
 
 namespace UI.Money
 {
@@ -11,6 +12,7 @@ namespace UI.Money
 
         private MoneyStorage storage;
 
+        
         void IGameInitElement.InitGame(IGameContext context)
         {
             this.storage = context.GetService<MoneyStorage>();
@@ -40,5 +42,6 @@ namespace UI.Money
             this.panel.SetupMoney(this.storage.Money);
         }
 #endif
+        
     }
 }

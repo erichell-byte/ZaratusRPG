@@ -1,4 +1,5 @@
 using System;
+using GameSystem;
 
 namespace GameElements.Zaratust
 {
@@ -50,6 +51,7 @@ namespace GameElements.Zaratust
         object[] GetAllServices();
 
         object GetService(Type type);
+        object[] GetServices(Type type);
 
         bool TryGetService<T>(out T service);
         

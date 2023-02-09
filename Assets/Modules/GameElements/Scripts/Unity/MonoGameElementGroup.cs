@@ -8,7 +8,7 @@ namespace GameElementsLesson.Unity
     public sealed class MonoGameElementGroup : MonoBehaviour, IGameElementGroup
     {
         [SerializeField]
-        private List<MonoBehaviour> gameElements = new List<MonoBehaviour>();
+        private List<MonoBehaviour> gameElements = new ();
 
         public IEnumerable<IGameElement> GetElements()
         {

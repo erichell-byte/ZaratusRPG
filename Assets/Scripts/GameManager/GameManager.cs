@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameElements;
-using GameElements.Zaratust;
+using GameSystem;
 using UnityEngine;
+using IGameContext = GameElements.Zaratust.IGameContext;
 
 namespace GameManager
 {
