@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Context;
 using GameElements.Tools;
 using GameElements.Zaratust;
+using GameSystem;
 using UnityEngine;
 
 namespace GameElements
@@ -124,8 +125,14 @@ namespace GameElements
 
         public void RegisterElement(IGameElement element)
         {
-            this.gameContext.RegisterElement(element);
+            throw new NotImplementedException();
         }
+
+        void IGameContext.UnRegisterElement(IGameElement element)
+        {
+            UnRegisterElement(element);
+        }
+        
         
         public void UnRegisterElement(IGameElement element)
         {
@@ -157,7 +164,12 @@ namespace GameElements
         {
             return this.gameContext.GetService(type);
         }
-        
+
+        public object[] GetServices(Type type)
+        {
+            return this.gameContext.GetServices(type);
+        }
+
         public bool TryGetService<T>(out T service)
         {
             return this.gameContext.TryGetService(out service);

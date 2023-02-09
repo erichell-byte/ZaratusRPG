@@ -2,6 +2,7 @@
 #if UNITY_EDITOR
 using System.Collections.Generic;
 using GameElements.Zaratust;
+using GameSystem;
 using UnityEngine;
 
 namespace GameElements.Tools
