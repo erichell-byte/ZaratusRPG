@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.GamePlay.Player;
 
 namespace UI.Money
 {

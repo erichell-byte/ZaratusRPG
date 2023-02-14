@@ -1,5 +1,5 @@
 using System;
-using GameElements.Zaratust;
+using GameSystem;
 using Services;
 using UI.Money;
 
@@ -19,11 +19,13 @@ namespace LoadSave.Money
             }
         }
 
-        public void SaveData(IGameContext gameContext)
+        void IGameDataSaver.SaveData(IGameContext gameContext)
         {
             var moneyStorage = gameContext.GetService<MoneyStorage>();
             moneyRepository.SaveMoney(moneyStorage.Money);
         }
+        
+        
     }
     
 }

@@ -1,3 +1,4 @@
+using Game.App;
 using Game.Repository;
 
 namespace Game.Meta

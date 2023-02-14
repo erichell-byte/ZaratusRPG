@@ -1,34 +1,34 @@
-using GameElementsLesson;
+
 using Sirenix.OdinInspector;
 using UnityEngine;
-
+using GameSystem;
 
 namespace UI.Money
 {
-    public class MoneyPanelAdapter : MonoBehaviour, IGameInitElement, IGameReadyElement, IGameFinishElement
+    public class MoneyPanelAdapter : MonoBehaviour//, IGameInitElement, IGameReadyElement, IGameFinishElement
     {
 
         [SerializeField] private MoneyPanel panel;
 
         private MoneyStorage storage;
 
-        
-        void IGameInitElement.InitGame(IGameContext context)
-        {
-            this.storage = context.GetService<MoneyStorage>();
-            var money = storage.Money;
-            this.panel.SetupMoney(money);
-        }
-
-        void IGameReadyElement.ReadyGame(IGameContext context)
-        {
-            this.storage.OnMoneySpent += this.OnMoneySpent;
-        }
-        
-        void IGameFinishElement.FinishGame(IGameContext context)
-        {
-            this.storage.OnMoneySpent -= this.OnMoneySpent;
-        }
+        //TODO найти в проекте интерфейсы для отслеживания 
+        // void IGameInitElement.InitGame(IGameContext context)
+        // {
+        //     this.storage = context.GetService<MoneyStorage>();
+        //     var money = storage.Money;
+        //     this.panel.SetupMoney(money);
+        // }
+        //
+        // void IGameReadyElement.ReadyGame(IGameContext context)
+        // {
+        //     this.storage.OnMoneySpent += this.OnMoneySpent;
+        // }
+        //
+        // void IGameFinishElement.FinishGame(IGameContext context)
+        // {
+        //     this.storage.OnMoneySpent -= this.OnMoneySpent;
+        // }
         
         private void OnMoneySpent(int amount)
         {

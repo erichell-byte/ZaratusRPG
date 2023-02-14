@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Context;
-using GameElements.Zaratust;
 using GameSystem;
-using GameSystem.Unity;
 using Sirenix.OdinInspector;
 using UI.Money;
 using UnityEngine;

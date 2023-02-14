@@ -1,3 +1,4 @@
+
 using GamePlay.Hero;
 using GameSystem;
 using Mechanics;
@@ -44,5 +45,6 @@ namespace Game.Meta
             this.heroComponent = this.heroService.GetHero().Get<IComponent_SetMeleeDamage>();
             this.SetDamage(this.Level);
         }
+        
     }
 }

@@ -6,8 +6,10 @@ namespace Game.Meta
     [Serializable]
     public struct UpgradeData
     {
-        [SerializeField] public string id;
+        [SerializeField]
+        public string id;
 
-        [SerializeField] public int level;
+        [SerializeField]
+        public int level;
     }
 }

@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using GameElements.Zaratust;
 using UnityEngine;
+
+// ReSharper disable InlineTemporaryVariable
 
 namespace GameSystem
 {
-    public class GameInjector
+    ///FOR ADVANCED GAME ARCHITECTURE
+    public static class GameInjector
     {
         private static readonly Type OBJECT_TYPE = typeof(object);
 
@@ -24,17 +26,19 @@ namespace GameSystem
                 Inject(source, target);
             }
         }
-        
+
         ///Use this methods to do dependency injection in our own class
-        private static void Inject(IGameContext source, object target)
+        public static void Inject(IGameContext source, object target)
         {
             var type = target.GetType();
 
             while (true)
             {
                 if (type == null || type == OBJECT_TYPE || type == MONO_BEHAVIOUR_TYPE)
+                {
                     break;
-                
+                }
+
                 InjectByFields(source, target, type);
                 InjectByMethods(source, target, type);
 
@@ -42,14 +46,13 @@ namespace GameSystem
             }
         }
 
-
-
         public static void InjectByFields(IGameContext context, object target, Type targetType)
         {
             var fields = targetType.GetFields(System.Reflection.BindingFlags.Instance |
                                               System.Reflection.BindingFlags.Public |
                                               System.Reflection.BindingFlags.NonPublic |
                                               System.Reflection.BindingFlags.DeclaredOnly);
+
             for (int i = 0, count = fields.Length; i < count; i++)
             {
                 var field = fields[i];
@@ -69,10 +72,11 @@ namespace GameSystem
 
         public static void InjectByMethods(IGameContext context, object target, Type targetType)
         {
-            var methods = targetType.GetMethods(System.Reflection.BindingFlags.Instance
-                                                | BindingFlags.Public
-                                                | BindingFlags.NonPublic
-                                                | BindingFlags.DeclaredOnly);
+            var methods = targetType.GetMethods(System.Reflection.BindingFlags.Instance |
+                                                System.Reflection.BindingFlags.Public |
+                                                System.Reflection.BindingFlags.NonPublic |
+                                                System.Reflection.BindingFlags.DeclaredOnly);
+
             for (int i = 0, count = methods.Length; i < count; i++)
             {
                 var method = methods[i];
@@ -82,7 +86,7 @@ namespace GameSystem
                 }
             }
         }
-        
+
         public static void InjectByMethod(IGameContext context, object target, MethodInfo method)
         {
             var parameters = method.GetParameters();
@@ -128,7 +132,7 @@ namespace GameSystem
             Array.Copy(services, result, serviceCount);
             return result;
         }
-        
+
         private static void LogWarning(Type type)
         {
 #if UNITY_EDITOR

@@ -11,6 +11,7 @@ namespace GameSystem
         SERVICE = 2
     }
     
+    ///FOR ADVANCED GAME ARCHITECTURE
     [MeansImplicitUse(ImplicitUseKindFlags.Default)]
     [AttributeUsage(AttributeTargets.Field)]
     public sealed class GameComponentAttribute : Attribute
@@ -19,9 +20,9 @@ namespace GameSystem
 
         public GameComponentAttribute()
         {
-            type = GameComponentType.NONE;
+            this.type = GameComponentType.NONE;
         }
-
+        
         public GameComponentAttribute(GameComponentType type)
         {
             this.type = type;

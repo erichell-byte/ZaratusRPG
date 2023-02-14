@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using GameElements.Zaratust;
 using GameSystem;
 using Meta.Upgrades;
 using Sirenix.OdinInspector;

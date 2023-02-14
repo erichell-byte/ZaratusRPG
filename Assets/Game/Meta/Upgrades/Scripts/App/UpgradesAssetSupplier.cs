@@ -1,4 +1,4 @@
-using App;
+using Game.App;
 using UnityEngine;
 
 namespace Game.Meta
@@ -18,7 +18,7 @@ namespace Game.Meta
         {
             return this.catalog.GetAllUpgrades();
         }
-        
+
         void IAppConfigsLoader.LoadConfigs()
         {
             this.catalog = Resources.Load<UpgradeCatalog>(UPGRADE_CATALOG);
